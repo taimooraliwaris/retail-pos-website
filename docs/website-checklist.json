@@ -1,0 +1,1345 @@
+{
+  "checklist_schema_version": "1.0.0",
+  "project": {
+    "name": "Retail POS Website",
+    "repository": "https://github.com/taimooraliwaris/retail-pos-website",
+    "repository_visibility_at_planning": "private",
+    "product_context": "Offline-first Flutter Android retail POS intended for Pakistan SMBs and general stores; product capabilities and release status must be verified against the real app before being advertised.",
+    "created_on": "2026-10-25",
+    "source_of_requirements": [
+      "User-provided 2025–2026 SaaS/POS website research synthesis",
+      "Research corrections agreed in the conversation",
+      "Architecture decisions agreed in the conversation",
+      "Current app repository and implementation evidence, to be audited before product claims are published"
+    ],
+    "baseline_status": "Planning checklist; website implementation and public release publication have not started.",
+    "checklist_conventions": {
+      "status_values": [
+        "not_started",
+        "in_progress",
+        "blocked",
+        "completed",
+        "deferred",
+        "not_applicable"
+      ],
+      "priority_values": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "completion_rule": "Mark an item completed only when its acceptance criteria have been checked and evidence is recorded. Planned features, draft code, and untested builds do not count as shipped."
+    }
+  },
+  "decisions": {
+    "repository_and_data": {
+      "mobile_app_repository": "Keep the existing Flutter app repository separate and do not expose private app source through the website.",
+      "website_repository": "Use this separate repository for static website code, content, docs, and website QA.",
+      "release_distribution": "Use a separate public release repository or another verified public release-asset location for approved signed APKs and the update manifest. Keep app source private.",
+      "website_database": "No database for the initial website. Keep public pages, FAQ, policies, and changelog in version-controlled files.",
+      "shared_database": false,
+      "website_to_pos_database_connection": false,
+      "rationale": [
+        "Avoid exposing retail sales, customer, supplier, ledger, or other private POS data.",
+        "Avoid backend/database costs and maintenance for a primarily informational website.",
+        "Keep app source, public marketing content, and public binary distribution responsibilities separate."
+      ]
+    },
+    "hosting": {
+      "preferred_initial_host": "Netlify Free, subject to verifying current terms, commercial-use eligibility, limits, and GitHub integration before connecting.",
+      "custom_domain": "Do not purchase a domain initially; use the host-provided HTTPS subdomain.",
+      "spending_policy": "Do not start paid services, upgrade a plan, buy a domain, enable auto-recharge, or incur costs without explicit user approval.",
+      "fallback_rule": "If the selected free host's current terms or limits do not fit the project, pause and evaluate another genuinely free commercial-eligible static host before deployment."
+    },
+    "technology": {
+      "proposed_stack": "Astro + TypeScript, statically generated pages, Markdown/JSON content where suitable.",
+      "runtime_database": "None for the initial website.",
+      "content_management": "Version-controlled source content; no paid CMS.",
+      "architecture_rule": "Prefer static HTML and minimal client-side JavaScript. Add server functions only if a real requirement emerges and the user approves the extra complexity."
+    },
+    "product_truth": {
+      "launch_positioning": "Pre-launch / pilot status until an approved public release is actually available.",
+      "claims_policy": "Every product capability, security statement, metric, compatibility claim, and release note must be supported by code, test results, or verified product evidence.",
+      "proof_policy": "No fake testimonials, fake customer counts, fabricated ratings, invented screenshots, or claims of production readiness without evidence."
+    }
+  },
+  "checklist": [
+    {
+      "category_id": "architecture_and_governance",
+      "title": "Architecture, scope, and project governance",
+      "items": [
+        {
+          "id": "ARCH-001",
+          "priority": "P0",
+          "requirement": "Keep the website in this separate repository.",
+          "acceptance_criteria": "Website source and public content are maintained in retail-pos-website; no unrelated app source is copied into it.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-002",
+          "priority": "P0",
+          "requirement": "Keep the Flutter app source repository separate and private unless the owner explicitly changes that decision.",
+          "acceptance_criteria": "No secrets or private application source are exposed through the public website or release assets.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-003",
+          "priority": "P0",
+          "requirement": "Do not create a website database for launch.",
+          "acceptance_criteria": "The initial site renders from repository content and has no database credentials, database migrations, or POS database connection.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-004",
+          "priority": "P0",
+          "requirement": "Keep the website completely disconnected from the POS production database.",
+          "acceptance_criteria": "Build and runtime configuration contain no Supabase service-role key, production database password, or direct POS-data access.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-005",
+          "priority": "P0",
+          "requirement": "Define a separate public release-asset location for signed APKs and update metadata.",
+          "acceptance_criteria": "The intended public manifest and APK URLs are documented and can be accessed without private GitHub authentication.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-006",
+          "priority": "P0",
+          "requirement": "Use a static-first architecture with minimal JavaScript.",
+          "acceptance_criteria": "Pages are useful and crawlable in their initial HTML; JavaScript is only added where it materially improves a real workflow.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-007",
+          "priority": "P0",
+          "requirement": "Confirm hosting terms before deployment.",
+          "acceptance_criteria": "Current commercial-use terms, free-plan limits, deployment behavior, bandwidth/build limits, and account requirements are checked and recorded.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-008",
+          "priority": "P0",
+          "requirement": "Keep spending at zero unless the user explicitly approves otherwise.",
+          "acceptance_criteria": "No paid plan, paid domain, paid service, or automatic billing/recharge is enabled.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-009",
+          "priority": "P1",
+          "requirement": "Document architecture and release ownership.",
+          "acceptance_criteria": "README explains website repository, public release assets, deployment process, and which repository owns each responsibility.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "ARCH-010",
+          "priority": "P1",
+          "requirement": "Use reviewable, small changes with explicit release gates.",
+          "acceptance_criteria": "Changes are validated before deployment; no mobile-app PR merge, production migration, or APK publication occurs without required approval.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    [
+      "product_truth_and_app_audit",
+      "Product truth and app audit",
+      [
+        {
+          "id": "TRUTH-001",
+          "priority": "P0",
+          "requirement": "Audit the actual Flutter app and repository before writing definitive feature claims.",
+          "acceptance_criteria": "A feature inventory links each advertised capability to source code, tests, a working screen, or other reproducible evidence.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-002",
+          "priority": "P0",
+          "requirement": "Classify each capability as implemented-and-verified, implemented-but-untested, in progress, planned, or unavailable.",
+          "acceptance_criteria": "The website content distinguishes all statuses and never presents planned work as shipped.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-003",
+          "priority": "P0",
+          "requirement": "Verify the actual Android package identity and release version.",
+          "acceptance_criteria": "Package ID, app display name, version, build number, signing identity, and minimum Android version are read from the app configuration/build evidence.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-004",
+          "priority": "P0",
+          "requirement": "Verify actual offline behavior before describing it.",
+          "acceptance_criteria": "Content names which workflows work offline, which need connectivity, what is queued, and how failures/retries are surfaced.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-005",
+          "priority": "P0",
+          "requirement": "Document offline multi-device stock limitations honestly.",
+          "acceptance_criteria": "The site explains that disconnected devices cannot instantly see each other's sales and describes only the reconciliation behavior that is actually implemented.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-006",
+          "priority": "P0",
+          "requirement": "Verify the roles and permissions that actually exist.",
+          "acceptance_criteria": "Owner, manager, cashier, or other role labels are only published if supported by app permissions and tests.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-007",
+          "priority": "P1",
+          "requirement": "Verify product-specific details such as PKR, barcode, units, receipts, reports, and supplier/customer workflows.",
+          "acceptance_criteria": "Every published detail is supported by code or test evidence; unknown items remain unclaimed.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUTH-008",
+          "priority": "P1",
+          "requirement": "Maintain a source-of-truth product capability matrix.",
+          "acceptance_criteria": "A repository document records feature name, status, evidence, last verification date, and approved public wording.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    ],
+    {
+      "category_id": "information_architecture",
+      "title": "Information architecture and page scope",
+      "items": [
+        {
+          "id": "IA-001",
+          "priority": "P0",
+          "requirement": "Create a clear homepage.",
+          "acceptance_criteria": "The homepage explains what the product is, who it is for, its current availability/status, and the next useful action.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-002",
+          "priority": "P0",
+          "requirement": "Create a product/features hub.",
+          "acceptance_criteria": "The hub summarizes verified capabilities and links to relevant deeper explanations.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-003",
+          "priority": "P0",
+          "requirement": "Create a dedicated download/get-app page.",
+          "acceptance_criteria": "It states whether a public build is available and includes version, requirements, and installation guidance when applicable.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-004",
+          "priority": "P0",
+          "requirement": "Create a changelog/release-history page.",
+          "acceptance_criteria": "The page lists only real, published releases in newest-first order.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-005",
+          "priority": "P0",
+          "requirement": "Create FAQ and support information.",
+          "acceptance_criteria": "Visitors can find clear answers and a verified contact/support route.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-006",
+          "priority": "P0",
+          "requirement": "Create privacy and terms pages before public launch.",
+          "acceptance_criteria": "Policies reflect actual data collection, external services, distribution, and jurisdictional needs and are reviewed before publication.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-007",
+          "priority": "P1",
+          "requirement": "Create a security/data-handling page.",
+          "acceptance_criteria": "It explains verified roles, device admission, storage, sync, backups, and limitations without unsupported guarantees.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-008",
+          "priority": "P1",
+          "requirement": "Create a page or section explaining offline operation and sync.",
+          "acceptance_criteria": "The explanation differentiates local behavior, network-dependent behavior, retry/recovery, and conflict handling.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-009",
+          "priority": "P1",
+          "requirement": "Create About and Contact pages or equivalent sections.",
+          "acceptance_criteria": "Product identity and support details are confirmed and consistent across the site.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-010",
+          "priority": "P1",
+          "requirement": "Create pricing/access information only after the actual model is decided.",
+          "acceptance_criteria": "Visitors can understand whether access is free, paid, invite-only, or pilot-based; no invented price is published.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-011",
+          "priority": "P2",
+          "requirement": "Add feature deep pages for high-intent workflows when verified content exists.",
+          "acceptance_criteria": "Checkout, till, inventory, offline/sync, or other pages provide distinct useful detail rather than thin duplicate SEO pages.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-012",
+          "priority": "P2",
+          "requirement": "Add role/use-case pages only when they reflect real supported workflows.",
+          "acceptance_criteria": "Cashier, manager, owner, kiryana, or general-store pages contain unique accurate information and not just keyword substitutions.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "IA-013",
+          "priority": "P3",
+          "requirement": "Consider comparisons, integrations, case studies, status page, and help center at scale.",
+          "acceptance_criteria": "Each is added only when there is genuine information and a maintainable operational need.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "homepage_conversion",
+      "title": "Homepage clarity and conversion",
+      "items": [
+        {
+          "id": "HOME-001",
+          "priority": "P0",
+          "requirement": "Write an outcome-led hero headline.",
+          "acceptance_criteria": "A first-time visitor can understand the product and intended audience without reading technical jargon.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-002",
+          "priority": "P0",
+          "requirement": "Show the current pilot/pre-launch status clearly.",
+          "acceptance_criteria": "The hero or immediately visible content does not imply public production readiness if the release is not approved.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-003",
+          "priority": "P0",
+          "requirement": "Use one dominant primary call to action.",
+          "acceptance_criteria": "The primary action is appropriate to the real state: approved download, pilot/contact request, or product walkthrough.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-004",
+          "priority": "P0",
+          "requirement": "Use real product evidence instead of invented interface visuals.",
+          "acceptance_criteria": "Any product screenshot, GIF, or demo is captured from an actual build and accurately represents current behavior.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-005",
+          "priority": "P1",
+          "requirement": "Explain the customer problem in recognizable terms.",
+          "acceptance_criteria": "The content addresses real retail concerns such as cash reconciliation, stock accuracy, connectivity, or device access only where relevant.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-006",
+          "priority": "P1",
+          "requirement": "Present three to five verified outcome/feature highlights.",
+          "acceptance_criteria": "Each highlight follows outcome → feature → mechanism → proof and links to supporting detail.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-007",
+          "priority": "P1",
+          "requirement": "Include a compact trust signal without fabricated social proof.",
+          "acceptance_criteria": "Use verified pilot status, actual product evidence, or a truthful statement about intended users instead of invented logos, reviews, or metrics.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-008",
+          "priority": "P1",
+          "requirement": "Explain access/pricing or the current pilot path.",
+          "acceptance_criteria": "Visitors are not left guessing how to try the product or whether it is publicly available.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOME-009",
+          "priority": "P1",
+          "requirement": "End with a clear next action and a concise privacy/security reassurance.",
+          "acceptance_criteria": "The action works and reassurance is factual and linked to fuller details.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "feature_content",
+      "title": "Feature and workflow explanations",
+      "items": [
+        {
+          "id": "FEAT-001",
+          "priority": "P0",
+          "requirement": "Use outcome → feature → mechanism → proof for each promoted capability.",
+          "acceptance_criteria": "Every feature page/section explains the benefit, what happens, how it works, and evidence or a clearly disclosed limitation.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-002",
+          "priority": "P1",
+          "requirement": "Explain checkout and payment methods only as implemented.",
+          "acceptance_criteria": "Cash, online, credit/split payments, PKR rounding, receipt numbering, and retry/idempotency behavior are individually verified before claims.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-003",
+          "priority": "P1",
+          "requirement": "Explain catalogue and inventory behavior only as implemented.",
+          "acceptance_criteria": "Barcode/SKU search, units such as kg/piece, stock balances, low-stock rules, product publishing, and stock movements are evidence-backed.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-004",
+          "priority": "P1",
+          "requirement": "Explain till and cash control only as implemented.",
+          "acceptance_criteria": "Open/close, expected-versus-actual cash, cash-in/out, movement history, and shift reporting are verified.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-005",
+          "priority": "P1",
+          "requirement": "Explain roles and device admission only as implemented.",
+          "acceptance_criteria": "Permissions, device admission/revocation, device limits, and recovery steps match the actual application.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-006",
+          "priority": "P1",
+          "requirement": "Explain offline and synchronization workflows.",
+          "acceptance_criteria": "Pending operations, retries, conflict handling, recovery, and reconciliation are described without promising impossible simultaneous offline consistency.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-007",
+          "priority": "P2",
+          "requirement": "Explain customer/supplier ledgers and purchase workflows if verified.",
+          "acceptance_criteria": "Linked transactions, balances, supplier history, purchase receipt, and related reports match the real app.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-008",
+          "priority": "P2",
+          "requirement": "Explain receipts and sharing if verified.",
+          "acceptance_criteria": "Receipt persistence, digital/PNG output, and native sharing behavior are tested and accurately described.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-009",
+          "priority": "P2",
+          "requirement": "Explain reports and reporting periods if verified.",
+          "acceptance_criteria": "Report definitions, date ranges, time zones, and Pakistan calendar-period behavior are accurate.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FEAT-010",
+          "priority": "P2",
+          "requirement": "Provide role-aware workflow paths or a short walkthrough.",
+          "acceptance_criteria": "Cashier, manager, and owner journeys use real screens and do not reveal unsupported or private data.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "downloads_and_updates",
+      "title": "Official Android download and in-app updates",
+      "items": [
+        {
+          "id": "DL-001",
+          "priority": "P0",
+          "requirement": "Do not expose a public APK until an approved signed release exists.",
+          "acceptance_criteria": "Download page shows a truthful unavailable/pilot state until release approval and validation are complete.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-002",
+          "priority": "P0",
+          "requirement": "Use a public release asset location separate from the private app source.",
+          "acceptance_criteria": "Anonymous visitors can fetch the approved APK and manifest without repository login.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-003",
+          "priority": "P0",
+          "requirement": "Display exact app version, build number, release date, and release status.",
+          "acceptance_criteria": "Displayed metadata matches the APK and release record.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-004",
+          "priority": "P0",
+          "requirement": "Verify the release is signed with the expected production signing key.",
+          "acceptance_criteria": "Release signature/package identity is validated; debug builds are never labelled as public releases.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-005",
+          "priority": "P0",
+          "requirement": "Preserve signing-key continuity across updates.",
+          "acceptance_criteria": "A newer APK installs as an update over the prior approved app without changing package identity or signing identity.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-006",
+          "priority": "P0",
+          "requirement": "Publish a SHA-256 checksum for each APK.",
+          "acceptance_criteria": "The published checksum is generated from the exact uploaded asset and can be independently verified.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-007",
+          "priority": "P0",
+          "requirement": "Document Android compatibility and installation requirements.",
+          "acceptance_criteria": "Minimum supported Android version and relevant permissions are read from build configuration and tested.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-008",
+          "priority": "P0",
+          "requirement": "Explain Android's install-from-this-source permission and installer confirmation.",
+          "acceptance_criteria": "Instructions explain that Android may require user permission and confirmation; no silent-install promise is made.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-009",
+          "priority": "P0",
+          "requirement": "Define a stable HTTPS update-manifest URL.",
+          "acceptance_criteria": "The URL is stable, publicly reachable, returns valid JSON, and is configured consistently in the release build.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-010",
+          "priority": "P0",
+          "requirement": "Validate manifest schema and monotonic version/build behavior.",
+          "acceptance_criteria": "Version, build number, minimum supported build, release notes, APK URL, and checksum are validated; downgrade/invalid metadata is rejected.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-011",
+          "priority": "P0",
+          "requirement": "Harden the updater's download URL and redirect handling.",
+          "acceptance_criteria": "Only HTTPS is allowed; redirects are handled safely with an explicit host allowlist or an approved same-origin asset strategy; arbitrary hosts and downgrade redirects are rejected.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-012",
+          "priority": "P0",
+          "requirement": "Verify the APK checksum before opening Android's installer.",
+          "acceptance_criteria": "A corrupt, truncated, mismatched, or oversized APK is rejected and the user receives a clear error.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-013",
+          "priority": "P0",
+          "requirement": "Test optional and mandatory update behavior.",
+          "acceptance_criteria": "Optional updates can be deferred; mandatory updates respect the configured minimum build; manifest/network failures do not falsely claim success.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-014",
+          "priority": "P0",
+          "requirement": "Test first-install and subsequent-update journeys on real Android hardware.",
+          "acceptance_criteria": "The first install and at least one signed in-app update are validated on the supported device path before public launch.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-015",
+          "priority": "P1",
+          "requirement": "Document recovery for failed or interrupted updates.",
+          "acceptance_criteria": "Users can retry safely, retain the installed version if a download fails, and find support guidance.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "DL-016",
+          "priority": "P1",
+          "requirement": "Ensure website download metadata and update manifest remain consistent.",
+          "acceptance_criteria": "Automated or release-checklist validation catches mismatched versions, build numbers, checksums, and URLs.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "changelog_and_release_history",
+      "title": "Changelog, release history, and release discipline",
+      "items": [
+        {
+          "id": "LOG-001",
+          "priority": "P0",
+          "requirement": "Use newest-first release entries with a date and version/build.",
+          "acceptance_criteria": "Every published entry maps to a real approved release.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-002",
+          "priority": "P1",
+          "requirement": "Use consistent change types such as Added, Improved/Changed, Fixed, and Security.",
+          "acceptance_criteria": "Labels are understandable and used consistently; they do not imply a security fix without evidence.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-003",
+          "priority": "P1",
+          "requirement": "Write customer-facing benefit summaries before technical details.",
+          "acceptance_criteria": "A store owner can understand the effect without reading commit messages.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-004",
+          "priority": "P1",
+          "requirement": "Separate user-facing changes from compatibility/migration notes.",
+          "acceptance_criteria": "Any required action, supported-version change, data migration, or known issue is clear.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-005",
+          "priority": "P0",
+          "requirement": "Do not list unmerged code or unpublished builds as released.",
+          "acceptance_criteria": "Release entries are added only after the exact signed APK has passed the release gate and is publicly available.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-006",
+          "priority": "P2",
+          "requirement": "Use visuals for UI changes when real screenshots are available.",
+          "acceptance_criteria": "Images show the actual version and do not contain customer data or invented UI.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "LOG-007",
+          "priority": "P2",
+          "requirement": "Maintain a realistic update cadence.",
+          "acceptance_criteria": "Publish notes when shipping meaningful changes; never invent activity to fill a schedule.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "design_and_ux",
+      "title": "Visual consistency, responsive UX, and product showcase",
+      "items": [
+        {
+          "id": "UX-001",
+          "priority": "P0",
+          "requirement": "Inspect actual Flutter theme tokens before finalizing website styling.",
+          "acceptance_criteria": "Colors, typography, surfaces, radius, elevation, and icon language are extracted from the current app/theme rather than guessed.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-002",
+          "priority": "P0",
+          "requirement": "Make the site feel like the product's front door.",
+          "acceptance_criteria": "Website color and component language is consistent with the real app and does not introduce an unrelated generic SaaS aesthetic.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-003",
+          "priority": "P0",
+          "requirement": "Use mobile-first layouts.",
+          "acceptance_criteria": "Core content and actions work on narrow screens without horizontal scrolling or clipped controls.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-004",
+          "priority": "P1",
+          "requirement": "Make primary tap targets at least approximately 44 by 44 CSS pixels where practical.",
+          "acceptance_criteria": "Navigation, CTAs, accordions, and other controls are comfortable to use on touchscreens.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-005",
+          "priority": "P1",
+          "requirement": "Use progressive disclosure for long content.",
+          "acceptance_criteria": "Summaries come first; technical detail, setup steps, and edge cases are grouped or expandable without hiding essential safety information.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-006",
+          "priority": "P1",
+          "requirement": "Use real product screenshots in device frames where useful.",
+          "acceptance_criteria": "Screenshots come from a real build, are legible, and reflect supported features.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-007",
+          "priority": "P2",
+          "requirement": "Create a short ungated product walkthrough before considering a full interactive demo center.",
+          "acceptance_criteria": "A visitor can see meaningful value without providing an email; demo failure has a clear fallback.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-008",
+          "priority": "P2",
+          "requirement": "Organize demos by real jobs or roles if the product evidence supports them.",
+          "acceptance_criteria": "Walkthroughs cover genuine workflows such as running a shift, closeout, or device recovery—not fabricated capabilities.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-009",
+          "priority": "P1",
+          "requirement": "Keep motion subtle and purposeful.",
+          "acceptance_criteria": "Animations do not block navigation, harm readability, or create performance/accessibility problems.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "UX-010",
+          "priority": "P0",
+          "requirement": "Provide visible loading, empty, error, and unavailable states where the website has interactive functionality.",
+          "acceptance_criteria": "Visitors always have a clear next step when an asset, demo, or download is unavailable.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "trust_privacy_security",
+      "title": "Trust, privacy, security, legal, and support",
+      "items": [
+        {
+          "id": "TRUST-001",
+          "priority": "P0",
+          "requirement": "Publish accurate privacy information before collecting personal data or releasing publicly.",
+          "acceptance_criteria": "The policy describes actual data collection, cookies/analytics, external services, contact flows, retention, and relevant rights.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-002",
+          "priority": "P0",
+          "requirement": "Publish terms appropriate to the actual distribution and access model.",
+          "acceptance_criteria": "Terms do not promise services, warranties, support, or availability that are not offered.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-003",
+          "priority": "P0",
+          "requirement": "Do not claim encryption, certifications, compliance, backups, or security guarantees without verification.",
+          "acceptance_criteria": "Every security statement links to a real implementation or documented operational control.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-004",
+          "priority": "P0",
+          "requirement": "Explain role-based access and device controls accurately.",
+          "acceptance_criteria": "Role boundaries, admission, revocation, and device limits match verified behavior.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-005",
+          "priority": "P0",
+          "requirement": "Explain what data the website itself collects.",
+          "acceptance_criteria": "The initial static site does not imply it can see POS transactions; no POS customer/sales data is transmitted to it.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-006",
+          "priority": "P0",
+          "requirement": "Keep secrets out of source and client bundles.",
+          "acceptance_criteria": "No API keys, private tokens, database credentials, signing keys, or secrets are committed or shipped to browsers.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-007",
+          "priority": "P1",
+          "requirement": "Provide a real support route and realistic expectations.",
+          "acceptance_criteria": "Contact links are tested and response-time promises are made only if an actual support commitment exists.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-008",
+          "priority": "P0",
+          "requirement": "Do not publish fake testimonials, customer logos, star ratings, or outcome statistics.",
+          "acceptance_criteria": "All social proof is attributable and permissioned, or replaced with factual product evidence.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "TRUST-009",
+          "priority": "P1",
+          "requirement": "Review privacy/legal content for Pakistan and any other actual target markets.",
+          "acceptance_criteria": "Policies are reviewed for actual operations and are not presented as legal advice or copied boilerplate that contradicts the product.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "seo_geo_aeo",
+      "title": "SEO, GEO/AEO, crawlability, and content quality",
+      "items": [
+        {
+          "id": "SEO-001",
+          "priority": "P0",
+          "requirement": "Give each important page a descriptive, unique title and meta description.",
+          "acceptance_criteria": "Titles and descriptions reflect actual page content and are not duplicated across the site.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-002",
+          "priority": "P0",
+          "requirement": "Use crawlable semantic HTML and a logical heading hierarchy.",
+          "acceptance_criteria": "Main content is available in rendered HTML and headings describe the page structure.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-003",
+          "priority": "P0",
+          "requirement": "Use clean, stable URLs.",
+          "acceptance_criteria": "Routes are descriptive, lowercase where appropriate, and do not change without redirects.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-004",
+          "priority": "P0",
+          "requirement": "Add a sitemap and correctly configured robots.txt.",
+          "acceptance_criteria": "Sitemap contains canonical public pages; robots.txt does not accidentally block the site.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-005",
+          "priority": "P0",
+          "requirement": "Add canonical URLs and Open Graph/social metadata.",
+          "acceptance_criteria": "Canonical links and social preview metadata point to the correct deployed URL once selected.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-006",
+          "priority": "P1",
+          "requirement": "Add meaningful image alt text.",
+          "acceptance_criteria": "Informative images have descriptive alt text; decorative images use empty alt text.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-007",
+          "priority": "P1",
+          "requirement": "Add structured data only where accurate and eligible.",
+          "acceptance_criteria": "Organization, SoftwareApplication, BreadcrumbList, or other schema validates and matches visible content; no rich-result guarantee is made.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-008",
+          "priority": "P1",
+          "requirement": "Structure FAQ answers to answer the question first.",
+          "acceptance_criteria": "Each answer begins with a direct, quotable response and then gives limitations or context.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-009",
+          "priority": "P0",
+          "requirement": "Follow Google's current AI-feature/search guidance rather than GEO hacks.",
+          "acceptance_criteria": "No claims that special AI markup, llms.txt, or keyword stuffing guarantees AI citations; content is useful, accurate, and crawlable.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-010",
+          "priority": "P1",
+          "requirement": "Build internal links between hubs, feature pages, download, changelog, FAQ, and trust pages.",
+          "acceptance_criteria": "Visitors and crawlers can navigate related content without dead ends.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-011",
+          "priority": "P2",
+          "requirement": "Create Pakistan/location-specific pages only where the product genuinely serves that audience.",
+          "acceptance_criteria": "No thin city pages or unsupported local-service claims are published.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-012",
+          "priority": "P2",
+          "requirement": "Publish educational resources when useful content can be maintained.",
+          "acceptance_criteria": "Articles answer real retail POS questions and cite reliable sources for external factual claims.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "SEO-013",
+          "priority": "P0",
+          "requirement": "Verify indexability after deployment.",
+          "acceptance_criteria": "Production pages return expected status codes, canonical URLs, and are not blocked by noindex or host settings.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "performance_accessibility",
+      "title": "Performance, accessibility, and technical quality",
+      "items": [
+        {
+          "id": "QA-001",
+          "priority": "P0",
+          "requirement": "Aim for Core Web Vitals targets at the 75th percentile: LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1.",
+          "acceptance_criteria": "Lab testing is used before launch; field data is monitored when enough real traffic exists.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-002",
+          "priority": "P0",
+          "requirement": "Keep JavaScript and third-party assets to a minimum.",
+          "acceptance_criteria": "The site has no unnecessary client frameworks, autoplay media, or heavy external scripts.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-003",
+          "priority": "P1",
+          "requirement": "Optimize images and fonts.",
+          "acceptance_criteria": "Images use suitable dimensions/formats, fonts are limited, and layout shifts from assets are prevented.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-004",
+          "priority": "P0",
+          "requirement": "Check keyboard navigation and visible focus states.",
+          "acceptance_criteria": "All navigation and interactive controls are usable without a mouse.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-005",
+          "priority": "P1",
+          "requirement": "Check contrast, labels, semantic controls, and reduced motion.",
+          "acceptance_criteria": "Important text and controls are accessible; form fields have labels; motion respects user preferences.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-006",
+          "priority": "P0",
+          "requirement": "Test responsive layouts across phone, tablet, and desktop widths.",
+          "acceptance_criteria": "Navigation, typography, feature layouts, changelog, and download sections remain usable at common viewport sizes.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-007",
+          "priority": "P0",
+          "requirement": "Check console errors, broken assets, and failed network requests.",
+          "acceptance_criteria": "No unexplained errors remain in production-like builds.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "QA-008",
+          "priority": "P1",
+          "requirement": "Run HTML/link, accessibility, and Lighthouse-style audits.",
+          "acceptance_criteria": "Critical and high-severity issues are fixed or explicitly documented before release.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "hosting_and_operations",
+      "title": "Hosting, deployment, domains, and maintenance",
+      "items": [
+        {
+          "id": "HOST-001",
+          "priority": "P0",
+          "requirement": "Verify Netlify Free's current terms and limits before linking the repository.",
+          "acceptance_criteria": "Commercial eligibility, monthly credits/limits, build behavior, bandwidth, and pause behavior are documented from current official sources.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-002",
+          "priority": "P0",
+          "requirement": "Use the free host-provided HTTPS subdomain initially.",
+          "acceptance_criteria": "No paid domain is purchased or required for initial testing.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-003",
+          "priority": "P0",
+          "requirement": "Connect GitHub deployment with least privilege.",
+          "acceptance_criteria": "The host can deploy the website repository without access to unrelated repositories or secrets beyond what is needed.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-004",
+          "priority": "P0",
+          "requirement": "Configure production and preview deployments safely.",
+          "acceptance_criteria": "Preview changes can be reviewed before production; failed builds do not replace the last working site unexpectedly.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-005",
+          "priority": "P0",
+          "requirement": "Confirm HTTPS and correct redirects.",
+          "acceptance_criteria": "All public URLs use HTTPS, canonical redirects are consistent, and no redirect loops exist.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-006",
+          "priority": "P0",
+          "requirement": "Avoid paid features and automatic billing.",
+          "acceptance_criteria": "Account settings are reviewed to ensure no paid add-ons, auto-recharge, or spending commitment is activated.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-007",
+          "priority": "P1",
+          "requirement": "Document deployment and rollback steps.",
+          "acceptance_criteria": "A maintainer can redeploy a known good commit and recover from a broken release.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-008",
+          "priority": "P1",
+          "requirement": "Monitor free-plan usage and build failures.",
+          "acceptance_criteria": "Usage can be checked periodically and there is a documented response if the free quota is reached.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-009",
+          "priority": "P1",
+          "requirement": "Keep environment variables minimal.",
+          "acceptance_criteria": "Static pages need no secret environment variables; any public build variables are explicitly documented as public.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "HOST-010",
+          "priority": "P1",
+          "requirement": "Document how to change the public base URL later.",
+          "acceptance_criteria": "Canonical URLs, sitemap, social metadata, and update-manifest links can be updated without hidden hard-coded old domains.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "release_workflow_and_quality_gate",
+      "title": "Validation and public release gates",
+      "items": [
+        {
+          "id": "REL-001",
+          "priority": "P0",
+          "requirement": "Validate JSON, TypeScript, and the production static build.",
+          "acceptance_criteria": "Build and validation commands pass from a clean checkout.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-002",
+          "priority": "P0",
+          "requirement": "Test all internal and external links.",
+          "acceptance_criteria": "No broken navigation, download, support, policy, or changelog links remain.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-003",
+          "priority": "P0",
+          "requirement": "Review every product claim against the capability matrix.",
+          "acceptance_criteria": "No planned or untested capability is described as currently available.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-004",
+          "priority": "P0",
+          "requirement": "Test download page with no release available.",
+          "acceptance_criteria": "The empty/pilot state is informative and does not present placeholder or private URLs as real downloads.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-005",
+          "priority": "P0",
+          "requirement": "Test the download page after a real approved release is available.",
+          "acceptance_criteria": "APK URL, version/build, checksum, size, requirements, release notes, and signature status all agree.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-006",
+          "priority": "P0",
+          "requirement": "Validate the public update manifest against the app's expected schema.",
+          "acceptance_criteria": "Manifest fields, HTTPS URLs, version policy, minimum supported build, checksum, and host restrictions pass automated tests.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-007",
+          "priority": "P0",
+          "requirement": "Test updater failure paths.",
+          "acceptance_criteria": "Network failure, invalid JSON, redirect to unapproved host, checksum mismatch, partial download, and installer cancellation all have safe outcomes.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-008",
+          "priority": "P0",
+          "requirement": "Validate the update flow on actual Android hardware.",
+          "acceptance_criteria": "A signed update is installed over the prior signed build on the intended supported device path; emulator-only results are not described as device validation.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-009",
+          "priority": "P0",
+          "requirement": "Review mobile UX and accessibility manually.",
+          "acceptance_criteria": "Primary CTA, menus, download instructions, FAQ, and error states are usable on a phone.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-010",
+          "priority": "P0",
+          "requirement": "Review privacy, terms, contact information, and support links.",
+          "acceptance_criteria": "All are accurate and functional before public launch.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-011",
+          "priority": "P0",
+          "requirement": "Confirm SEO basics and production URL configuration.",
+          "acceptance_criteria": "Sitemap, robots.txt, canonical links, metadata, social cards, and structured data point to the actual production host.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-012",
+          "priority": "P0",
+          "requirement": "Record known limitations and unresolved issues.",
+          "acceptance_criteria": "No known blocker is hidden; remaining non-blockers have an owner and follow-up plan.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "REL-013",
+          "priority": "P0",
+          "requirement": "Do not claim a public launch before the release gates pass.",
+          "acceptance_criteria": "Launch announcement and public download activation happen only after explicit review of all P0 gates.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "category_id": "deferred_and_conditional",
+      "title": "Deferred or conditional work",
+      "items": [
+        {
+          "id": "FUT-001",
+          "priority": "P2",
+          "requirement": "Defer interactive demo center until real product screens and workflows are available.",
+          "acceptance_criteria": "A short real walkthrough is considered first; full interactive demos require demonstrated value and maintainable assets.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-002",
+          "priority": "P2",
+          "requirement": "Defer customer case studies and testimonials until genuine customers give permission.",
+          "acceptance_criteria": "No placeholder testimonials are published.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-003",
+          "priority": "P2",
+          "requirement": "Defer blog/resources until there is capacity to maintain accurate useful content.",
+          "acceptance_criteria": "Content plan targets real user questions rather than volume or keyword stuffing.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-004",
+          "priority": "P3",
+          "requirement": "Defer comparison pages and integration directories until the claims can be substantiated.",
+          "acceptance_criteria": "Comparisons are fair, dated, sourced where appropriate, and do not rely on disparagement.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-005",
+          "priority": "P3",
+          "requirement": "Defer a status page unless the product has real services/uptime worth reporting.",
+          "acceptance_criteria": "Status is not simulated or presented as live without a monitored source.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-006",
+          "priority": "P3",
+          "requirement": "Defer email capture, accounts, contact-form storage, analytics, and a CMS unless there is a real need.",
+          "acceptance_criteria": "Any later collection has explicit approval, a privacy review, and an appropriate secure implementation.",
+          "status": "not_started",
+          "notes": ""
+        },
+        {
+          "id": "FUT-007",
+          "priority": "P2",
+          "requirement": "Consider a custom domain only after the user explicitly approves the cost and ownership.",
+          "acceptance_criteria": "No domain purchase occurs as part of the initial free launch.",
+          "status": "not_started",
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "launch_acceptance_gate": [
+    "The website builds successfully from a clean checkout.",
+    "The site is responsive, accessible, and has no unresolved critical or high-severity QA defects.",
+    "All product claims are backed by current evidence and the pilot/public status is unmistakable.",
+    "Privacy, terms, support, and contact information are accurate.",
+    "The site is served over HTTPS and is crawlable with correct canonical metadata, sitemap, and robots.txt.",
+    "No production POS database, private source, customer data, signing key, or secret is exposed.",
+    "No public APK is linked until a signed release has passed the release gate.",
+    "The update manifest and APK checksum/host/version rules are validated before updater activation.",
+    "No paid service, domain, auto-recharge, or spending commitment has been activated without explicit approval.",
+    "The owner has been given the deployment URL, repository changes, QA results, and known limitations."
+  ],
+  "source_references_to_recheck_before_launch": [
+    {
+      "topic": "Google SEO starter guidance",
+      "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "check_before_launch": "Confirm current recommendations for crawlability, page titles, links, and useful content."
+    },
+    {
+      "topic": "Google AI search features guidance",
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "check_before_launch": "Confirm current advice for appearing in AI search features; do not promise citations or use unsupported hacks."
+    },
+    {
+      "topic": "Google Core Web Vitals",
+      "url": "https://developers.google.com/search/docs/appearance/core-web-vitals",
+      "check_before_launch": "Confirm current thresholds and evaluation guidance."
+    },
+    {
+      "topic": "Keep a Changelog",
+      "url": "https://keepachangelog.com/en/2.0.0/",
+      "check_before_launch": "Use as a changelog convention, not as proof that a release exists."
+    },
+    {
+      "topic": "GitHub Releases",
+      "url": "https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases",
+      "check_before_launch": "Confirm current binary asset constraints and public download behavior."
+    },
+    {
+      "topic": "Android alternative distribution",
+      "url": "https://developer.android.com/distribute/marketing-tools/alternative-distribution",
+      "check_before_launch": "Confirm current installation permissions and user confirmation behavior for the target Android versions."
+    },
+    {
+      "topic": "Netlify Free plan",
+      "url": "https://www.netlify.com/pricing/",
+      "check_before_launch": "Confirm current free-plan limits, commercial eligibility, build quotas, and whether a site pauses at its limit."
+    }
+  ]
+}
