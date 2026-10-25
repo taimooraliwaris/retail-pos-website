@@ -12,7 +12,7 @@
       "Architecture decisions agreed in the conversation",
       "Current app repository and implementation evidence, to be audited before product claims are published"
     ],
-    "baseline_status": "Website foundation committed on feature branch; draft PR open. GitHub Actions runs fail before steps start and provide no logs, so the Astro production build is not yet verified. No hosting deployment, public APK publication, or database connection has occurred.",
+    "baseline_status": "Website foundation committed on feature branch; draft PR open. GitHub Actions is blocked before steps start by the reported account payment/spending-limit error; no Astro production build has been verified. Source-level checks have been reviewed, but rendered browser/accessibility QA, hosting deployment, public APK publication, and any database connection have not occurred.",
     "checklist_conventions": {
       "status_values": [
         "not_started",
@@ -29,7 +29,21 @@
         "P3"
       ],
       "completion_rule": "Mark an item completed only when its acceptance criteria have been checked and evidence is recorded. Planned features, draft code, and untested builds do not count as shipped."
-    }
+    },
+    "validation_evidence": [
+      {
+        "checked_on": "2026-10-25",
+        "check": "GitHub Actions build attempt",
+        "result": "blocked",
+        "evidence": "Workflow run 40203184578, attempt 2, failed before any step ran; runner_id was 0 and no step logs were available. The user confirmed the same payment/spending-limit error. This is not a website build result."
+      },
+      {
+        "checked_on": "2026-10-25",
+        "check": "Repository source review",
+        "result": "source_review_only",
+        "evidence": "Feature data contains six areas marked planned; download page states no public APK is available and has no APK link; changelog states no public release; privacy and terms are marked noindex and excluded from the sitemap. This review does not establish Astro compilation or browser rendering."
+      }
+    ]
   },
   "decisions": {
     "repository_and_data": {
@@ -1129,16 +1143,16 @@
           "priority": "P0",
           "requirement": "Validate JSON, TypeScript, and the production static build.",
           "acceptance_criteria": "Build and validation commands pass from a clean checkout.",
-          "status": "in_progress",
-          "notes": ""
+          "status": "blocked",
+          "notes": "Blocked by the account-level GitHub Actions payment/spending-limit error. Latest inspected attempt failed before runner assignment (runner_id 0), with zero steps and no logs. Source review is not a production build. Use docs/ci-fallback.md for the no-cost local validation route; mark completed only after content checks and Astro build both pass."
         },
         {
           "id": "REL-002",
           "priority": "P0",
           "requirement": "Test all internal and external links.",
           "acceptance_criteria": "No broken navigation, download, support, policy, or changelog links remain.",
-          "status": "not_started",
-          "notes": ""
+          "status": "in_progress",
+          "notes": "Source-level inspection found no broken static internal links in the reviewed pages/shared layout/header/footer. External link availability and rendered browser navigation have not yet been tested."
         },
         {
           "id": "REL-003",
