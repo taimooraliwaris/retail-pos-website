@@ -697,3 +697,38 @@ h3 { font-weight: 720; }
 @media (prefers-reduced-motion: reduce) {
   .button, .feature-card, .nav-link, .footer-links a { transition: none; }
 }
+
+
+/* Keep the brand grounded in the app's slate seed, with mint as a restrained
+   secondary accent; the stronger typography and composition carry the visual
+   personality rather than a disconnected rainbow of product colours. */
+:root { --brand: #64748b; --brand-strong: #475569; }
+.brand-mark {
+  background: linear-gradient(135deg, #dbe4ef 0%, #a7b7ca 52%, #5eead4 100%);
+  color: #0b1020;
+  box-shadow: 0 8px 28px rgba(148,163,184,.18);
+}
+.button {
+  background: linear-gradient(125deg, #dbeafe 0%, #cbd5e1 52%, #99f6e4 100%);
+  color: #0b1020;
+  box-shadow: 0 10px 28px rgba(94,234,212,.12);
+}
+.button:hover {
+  background: linear-gradient(125deg, #eff6ff 0%, #dbe4ef 52%, #ccfbf1 100%);
+  color: #0b1020;
+  box-shadow: 0 15px 34px rgba(94,234,212,.18);
+}
+.button-secondary { background: rgba(255,255,255,.055); color: #f8fafc; border-color: rgba(255,255,255,.2); box-shadow: none; }
+.button-secondary:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.32); box-shadow: none; }
+.visual-index { border-color: rgba(203,213,225,.25); background: rgba(148,163,184,.12); color: #e2e8f0; }
+.visual-core {
+  background: linear-gradient(145deg, #64748b, #334155 62%, #0f766e);
+  border-color: rgba(203,213,225,.38);
+  box-shadow: 0 0 0 10px rgba(148,163,184,.055), 0 18px 44px rgba(15,118,110,.24);
+}
+.visual-node-mark { border-color: rgba(203,213,225,.18); background: rgba(148,163,184,.12); color: #dbeafe; }
+.feature-icon { border-color: #dfe6ef; background: linear-gradient(145deg, #eef2f7, #e8fbf8); color: #475569; }
+.step-label, .text-link { color: #475569; }
+.text-link:hover { color: #0f766e; }
+.cta-band .button { background: linear-gradient(125deg, #dbeafe, #cbd5e1 52%, #99f6e4); color: #0b1020; }
+.cta-band .button:hover { background: linear-gradient(125deg, #eff6ff, #dbe4ef 52%, #ccfbf1); color: #0b1020; }
