@@ -1,0 +1,44 @@
+[
+  {
+    "id": "checkout",
+    "title": "Checkout and receipts",
+    "outcome": "Keep the counter flow focused on finding items, reviewing a basket, and completing a sale.",
+    "planned_scope": "Product search, barcode flow, cart review, payment handling, receipt history, and sharing—only as each workflow is implemented and validated.",
+    "status": "planned"
+  },
+  {
+    "id": "inventory",
+    "title": "Inventory and stock movement",
+    "outcome": "Make stock changes traceable instead of hiding them in a single number.",
+    "planned_scope": "Catalogue, SKU/barcode, retail units, stock balances, low-stock signals, and movement history.",
+    "status": "planned"
+  },
+  {
+    "id": "till",
+    "title": "Till and cash control",
+    "outcome": "Help a manager understand what should be in the till at the end of a shift.",
+    "planned_scope": "Shift opening/closing, expected-versus-counted cash, cash-in/out, and a clear movement trail.",
+    "status": "planned"
+  },
+  {
+    "id": "offline",
+    "title": "Offline operation and sync",
+    "outcome": "Design for unreliable connectivity without pretending disconnected devices can see one another's sales.",
+    "planned_scope": "Local data, durable queued operations, safe retries, reconnect behavior, and visible reconciliation when stock conflicts occur.",
+    "status": "planned"
+  },
+  {
+    "id": "access",
+    "title": "Roles and device access",
+    "outcome": "Give each person and admitted device only the access their job requires.",
+    "planned_scope": "Role-aware workflows, device admission/revocation, and recovery paths, subject to implementation and testing.",
+    "status": "planned"
+  },
+  {
+    "id": "operations",
+    "title": "Customers, suppliers, and reports",
+    "outcome": "Bring everyday retail records together so managers can follow transactions and operational activity.",
+    "planned_scope": "Customer/supplier records, purchases, linked transaction history, and operational reporting.",
+    "status": "planned"
+  }
+]

@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const { title = "Retail POS Mobile", description = "An Android-first retail POS in foundation development.", path = Astro.url.pathname, noindex = false } = Astro.props;
+const canonical = Astro.site ? new URL(path, Astro.site).toString() : undefined;
+const socialImage = Astro.site ? new URL("/og-image.svg", Astro.site).toString() : undefined;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" /><meta name="theme-color" content="#475569" />
+  <title>{title}</title><meta name="description" content={description} />
+  {canonical && <link rel="canonical" href={canonical} />}
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <meta property="og:type" content="website" /><meta property="og:site_name" content="Retail POS Mobile" />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+  {canonical && <meta property="og:url" content={canonical} />}{socialImage && <meta property="og:image" content={socialImage} />}
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />{socialImage && <meta name="twitter:image" content={socialImage} />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader currentPath={path} />
+  <main id="main"><slot /></main>
+  <SiteFooter />
+</body>
+</html>
