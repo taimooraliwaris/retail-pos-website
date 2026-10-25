@@ -34,6 +34,6 @@ The static build is written to `dist/`.
 Before publishing, verify the final HTTPS site URL and set `SITE_URL` to that exact origin. The current `retail-pos-mobile-website.netlify.app` value is a proposed placeholder and must not be assumed available until checked. Recheck the hosting provider's current commercial-use terms, monthly limits, and pause behavior. Do not enable paid upgrades or automatic billing without explicit approval.
 
 ## Quality gates
-GitHub Actions runs content checks and the production build. A green website build does not prove that an Android workflow or the in-app update path works on a physical device.
+GitHub Actions is configured to run content checks and the production build. The initial workflow attempts failed before any steps started and produced no step logs, so a green CI build has not yet been established. Check repository Actions/runner availability or run the documented commands in a network-enabled Node.js 22.23.4 environment before merging. A green website build still does not prove that an Android workflow or in-app update path works on a physical device.
 
 Only mark checklist items completed when their acceptance criteria are checked and evidence is recorded.
