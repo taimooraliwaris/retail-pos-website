@@ -1,6 +1,6 @@
 # Product claims and evidence matrix
 
-Re-check this matrix against the mobile repository and tests whenever the app changes.
+Last checked on 2026-10-25 against the mobile README, pubspec.yaml, main.dart, and app_theme.dart. This is a foundation-level audit, not a full feature-by-feature code or physical-device audit. Re-check this matrix against the mobile repository and tests whenever the app changes.
 
 | Area | Evidence/status | Allowed public wording | Not allowed yet |
 |---|---|---|---|
