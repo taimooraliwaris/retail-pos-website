@@ -12,7 +12,7 @@
       "Architecture decisions agreed in the conversation",
       "Current app repository and implementation evidence, to be audited before product claims are published"
     ],
-    "baseline_status": "Website foundation committed on feature branch; draft PR open; CI did not produce step logs, so production build is not yet verified. No deployment, APK publication, or database connection has occurred.",
+    "baseline_status": "Website foundation committed on feature branch; draft PR open. GitHub Actions runs fail before steps start and provide no logs, so the Astro production build is not yet verified. No hosting deployment, public APK publication, or database connection has occurred.",
     "checklist_conventions": {
       "status_values": [
         "not_started",
@@ -277,7 +277,7 @@
           "priority": "P1",
           "requirement": "Create a security/data-handling page.",
           "acceptance_criteria": "It explains verified roles, device admission, storage, sync, backups, and limitations without unsupported guarantees.",
-          "status": "completed",
+          "status": "in_progress",
           "notes": ""
         },
         {
@@ -293,7 +293,7 @@
           "priority": "P1",
           "requirement": "Create About and Contact pages or equivalent sections.",
           "acceptance_criteria": "Product identity and support details are confirmed and consistent across the site.",
-          "status": "completed",
+          "status": "in_progress",
           "notes": ""
         },
         {
@@ -371,7 +371,7 @@
           "priority": "P1",
           "requirement": "Explain the customer problem in recognizable terms.",
           "acceptance_criteria": "The content addresses real retail concerns such as cash reconciliation, stock accuracy, connectivity, or device access only where relevant.",
-          "status": "in_progress",
+          "status": "completed",
           "notes": ""
         },
         {
@@ -417,7 +417,7 @@
           "priority": "P0",
           "requirement": "Use outcome → feature → mechanism → proof for each promoted capability.",
           "acceptance_criteria": "Every feature page/section explains the benefit, what happens, how it works, and evidence or a clearly disclosed limitation.",
-          "status": "completed",
+          "status": "in_progress",
           "notes": ""
         },
         {
@@ -489,7 +489,7 @@
           "priority": "P2",
           "requirement": "Provide role-aware workflow paths or a short walkthrough.",
           "acceptance_criteria": "Cashier, manager, and owner journeys use real screens and do not reveal unsupported or private data.",
-          "status": "in_progress",
+          "status": "deferred",
           "notes": ""
         }
       ]
@@ -511,7 +511,7 @@
           "priority": "P0",
           "requirement": "Use a public release asset location separate from the private app source.",
           "acceptance_criteria": "Anonymous visitors can fetch the approved APK and manifest without repository login.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -519,7 +519,7 @@
           "priority": "P0",
           "requirement": "Display exact app version, build number, release date, and release status.",
           "acceptance_criteria": "Displayed metadata matches the APK and release record.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -567,7 +567,7 @@
           "priority": "P0",
           "requirement": "Define a stable HTTPS update-manifest URL.",
           "acceptance_criteria": "The URL is stable, publicly reachable, returns valid JSON, and is configured consistently in the release build.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -583,7 +583,7 @@
           "priority": "P0",
           "requirement": "Harden the updater's download URL and redirect handling.",
           "acceptance_criteria": "Only HTTPS is allowed; redirects are handled safely with an explicit host allowlist or an approved same-origin asset strategy; arbitrary hosts and downgrade redirects are rejected.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -591,7 +591,7 @@
           "priority": "P0",
           "requirement": "Verify the APK checksum before opening Android's installer.",
           "acceptance_criteria": "A corrupt, truncated, mismatched, or oversized APK is rejected and the user receives a clear error.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -599,7 +599,7 @@
           "priority": "P0",
           "requirement": "Test optional and mandatory update behavior.",
           "acceptance_criteria": "Optional updates can be deferred; mandatory updates respect the configured minimum build; manifest/network failures do not falsely claim success.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -623,7 +623,7 @@
           "priority": "P1",
           "requirement": "Ensure website download metadata and update manifest remain consistent.",
           "acceptance_criteria": "Automated or release-checklist validation catches mismatched versions, build numbers, checksums, and URLs.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         }
       ]
@@ -763,7 +763,7 @@
           "priority": "P1",
           "requirement": "Keep motion subtle and purposeful.",
           "acceptance_criteria": "Animations do not block navigation, harm readability, or create performance/accessibility problems.",
-          "status": "not_started",
+          "status": "in_progress",
           "notes": ""
         },
         {
@@ -1059,7 +1059,7 @@
           "priority": "P0",
           "requirement": "Connect GitHub deployment with least privilege.",
           "acceptance_criteria": "The host can deploy the website repository without access to unrelated repositories or secrets beyond what is needed.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -1099,7 +1099,7 @@
           "priority": "P1",
           "requirement": "Monitor free-plan usage and build failures.",
           "acceptance_criteria": "Usage can be checked periodically and there is a documented response if the free quota is reached.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
@@ -1137,7 +1137,7 @@
           "priority": "P0",
           "requirement": "Test all internal and external links.",
           "acceptance_criteria": "No broken navigation, download, support, policy, or changelog links remain.",
-          "status": "in_progress",
+          "status": "not_started",
           "notes": ""
         },
         {
