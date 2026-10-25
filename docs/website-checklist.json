@@ -150,10 +150,10 @@
         }
       ]
     },
-    [
-      "product_truth_and_app_audit",
-      "Product truth and app audit",
-      [
+    {
+      "category_id": "product_truth_and_app_audit",
+      "title": "Product truth and app audit",
+      "items": [
         {
           "id": "TRUTH-001",
           "priority": "P0",
@@ -219,7 +219,7 @@
           "notes": ""
         }
       ]
-    ],
+    },
     {
       "category_id": "information_architecture",
       "title": "Information architecture and page scope",
