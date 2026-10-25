@@ -12,7 +12,7 @@
       "Architecture decisions agreed in the conversation",
       "Current app repository and implementation evidence, to be audited before product claims are published"
     ],
-    "baseline_status": "Website foundation committed on feature branch; draft PR open. GitHub Actions is blocked before steps start by the reported account payment/spending-limit error; no Astro production build has been verified. Source-level checks have been reviewed, but rendered browser/accessibility QA, hosting deployment, public APK publication, and any database connection have not occurred.",
+    "baseline_status": "Website foundation and portfolio-inspired visual redesign committed on feature branch; draft PR open. User successfully ran content checks and Astro build on the previous foundation version (14 pages built). The latest redesign commit has not yet been rebuilt or visually reviewed in a browser. GitHub Actions remains blocked by the reported account payment/spending-limit error. No deployment, public APK, or database connection exists.",
     "checklist_conventions": {
       "status_values": [
         "not_started",
@@ -42,6 +42,18 @@
         "check": "Repository source review",
         "result": "source_review_only",
         "evidence": "Feature data contains six areas marked planned; download page states no public APK is available and has no APK link; changelog states no public release; privacy and terms are marked noindex and excluded from the sitemap. This review does not establish Astro compilation or browser rendering."
+      },
+      {
+        "checked_on": "2026-10-25",
+        "check": "User local build of pre-redesign foundation",
+        "result": "passed_for_previous_commit",
+        "evidence": "User-provided terminal output shows npm run check:content passed and npm run build completed successfully, producing 14 static pages. The editorial visual redesign was committed after that build, so the latest commit still requires a fresh local build and browser review."
+      },
+      {
+        "checked_on": "2026-10-25",
+        "check": "Portfolio-inspired visual redesign",
+        "result": "implemented_source_review_only",
+        "evidence": "Homepage now uses an editorial dark hero, stronger type hierarchy, a CSS-drawn abstract product map explicitly labelled as illustrative (not an app screenshot), feature cards, an offline architecture panel, and a richer CTA/footer. Shared CSS adds responsive layouts and reduced-motion support. Rendered browser review is pending."
       }
     ]
   },
@@ -378,7 +390,7 @@
           "requirement": "Use real product evidence instead of invented interface visuals.",
           "acceptance_criteria": "Any product screenshot, GIF, or demo is captured from an actual build and accurately represents current behavior.",
           "status": "completed",
-          "notes": ""
+          "notes": "Homepage uses an abstract product-map illustration, explicitly labelled as illustrative and not a screenshot of a released app. No invented product screenshot or released UI is presented."
         },
         {
           "id": "HOME-005",
@@ -721,8 +733,8 @@
           "priority": "P0",
           "requirement": "Make the site feel like the product's front door.",
           "acceptance_criteria": "Website color and component language is consistent with the real app and does not introduce an unrelated generic SaaS aesthetic.",
-          "status": "completed",
-          "notes": ""
+          "status": "in_progress",
+          "notes": "A portfolio-inspired editorial visual pass is implemented in source while retaining the dark slate app foundation and restrained accents. Compare the rendered result with the portfolio and actual Flutter theme after the latest local build before marking complete."
         },
         {
           "id": "UX-003",
@@ -730,7 +742,7 @@
           "requirement": "Use mobile-first layouts.",
           "acceptance_criteria": "Core content and actions work on narrow screens without horizontal scrolling or clipped controls.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Responsive CSS for desktop, tablet, and phone was updated in the redesign. Latest commit still needs a fresh build and visual checks at real viewport widths."
         },
         {
           "id": "UX-004",
@@ -738,7 +750,7 @@
           "requirement": "Make primary tap targets at least approximately 44 by 44 CSS pixels where practical.",
           "acceptance_criteria": "Navigation, CTAs, accordions, and other controls are comfortable to use on touchscreens.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Primary buttons and navigation use comfortable target heights in source; verify rendered mobile tap targets and menu behavior before completion."
         },
         {
           "id": "UX-005",
@@ -778,7 +790,7 @@
           "requirement": "Keep motion subtle and purposeful.",
           "acceptance_criteria": "Animations do not block navigation, harm readability, or create performance/accessibility problems.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Hover transitions are restrained and reduced-motion overrides are present. Review the rendered result for unintended motion or contrast issues."
         },
         {
           "id": "UX-010",
@@ -1020,7 +1032,7 @@
           "requirement": "Check contrast, labels, semantic controls, and reduced motion.",
           "acceptance_criteria": "Important text and controls are accessible; form fields have labels; motion respects user preferences.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Reduced-motion support and high-contrast dark/light sections are present in source; run a rendered contrast and keyboard review after the latest redesign build."
         },
         {
           "id": "QA-006",
@@ -1028,7 +1040,7 @@
           "requirement": "Test responsive layouts across phone, tablet, and desktop widths.",
           "acceptance_criteria": "Navigation, typography, feature layouts, changelog, and download sections remain usable at common viewport sizes.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Responsive breakpoints were expanded for the redesigned hero and abstract product map. Latest commit has not yet been checked in a browser at phone, tablet, and desktop widths."
         },
         {
           "id": "QA-007",
@@ -1044,7 +1056,7 @@
           "requirement": "Run HTML/link, accessibility, and Lighthouse-style audits.",
           "acceptance_criteria": "Critical and high-severity issues are fixed or explicitly documented before release.",
           "status": "in_progress",
-          "notes": ""
+          "notes": "Source-level checks and the previous local build passed, but the latest redesign commit needs a fresh build plus rendered HTML, accessibility, and Lighthouse-style review."
         }
       ]
     },
@@ -1143,8 +1155,8 @@
           "priority": "P0",
           "requirement": "Validate JSON, TypeScript, and the production static build.",
           "acceptance_criteria": "Build and validation commands pass from a clean checkout.",
-          "status": "blocked",
-          "notes": "Blocked by the account-level GitHub Actions payment/spending-limit error. Latest inspected attempt failed before runner assignment (runner_id 0), with zero steps and no logs. Source review is not a production build. Use docs/ci-fallback.md for the no-cost local validation route; mark completed only after content checks and Astro build both pass."
+          "status": "in_progress",
+          "notes": "The user successfully ran content checks and Astro build on the pre-redesign foundation (14 pages built). Re-run both commands on the latest visual redesign commit. GitHub Actions remains blocked by the account payment/spending-limit error; do not claim CI passed."
         },
         {
           "id": "REL-002",
