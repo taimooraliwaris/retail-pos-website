@@ -1237,12 +1237,27 @@ p { color: var(--muted); }
   box-shadow: 0 15px 32px rgba(240,179,35,.26);
 }
 .button-secondary {
+  background: #fffdf8;
+  color: #171c27;
+  border-color: #d7dbe2;
+  box-shadow: none;
+}
+.button-secondary:hover {
+  background: #fff3d4;
+  color: #171c27;
+  border-color: #e4b63e;
+  box-shadow: none;
+}
+.hero .button-secondary {
   background: rgba(255,255,255,.055);
   color: #f8fafc;
   border-color: rgba(255,255,255,.22);
-  box-shadow: none;
 }
-.button-secondary:hover { background: rgba(255,255,255,.12); color: #fff; }
+.hero .button-secondary:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border-color: rgba(255,255,255,.32);
+}
 .hero::before {
   background:
     radial-gradient(ellipse at 78% 20%, rgba(240,179,35,.17), transparent 31%),
