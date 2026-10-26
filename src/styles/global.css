@@ -1200,3 +1200,129 @@ p { color: var(--muted); }
   .visual-support-item { padding: 10px; }
   .visual-caption { font-size: .55rem; }
 }
+
+
+/* Final brand correction: align the editorial redesign with the POS app's
+   slate + amber direction. Keep the visual depth; remove the unrelated
+   violet/teal startup palette that made the site feel disconnected. */
+:root {
+  --ink: #171c27;
+  --muted: #657080;
+  --brand: #f0b323;
+  --brand-strong: #c78308;
+  --deep: #111827;
+  --line: #e4e6e9;
+  --surface: #fffdf8;
+  --soft: #f7f5ef;
+  --soft-blue: #fff3d4;
+  --shadow: 0 24px 70px rgba(23, 28, 39, .12);
+}
+.site-header {
+  background: rgba(17, 24, 39, .96);
+  border-bottom-color: rgba(255,255,255,.1);
+}
+.brand-mark {
+  background: linear-gradient(135deg, #ffd56a 0%, #f0b323 62%, #d99008 100%);
+  color: #171c27;
+  box-shadow: 0 8px 26px rgba(240,179,35,.2);
+}
+.button {
+  background: linear-gradient(125deg, #ffd66b 0%, #f0b323 60%, #e4a00b 100%);
+  color: #171c27;
+  box-shadow: 0 10px 26px rgba(240,179,35,.2);
+}
+.button:hover {
+  background: linear-gradient(125deg, #ffe08b 0%, #f7c13d 60%, #efae1b 100%);
+  color: #171c27;
+  box-shadow: 0 15px 32px rgba(240,179,35,.26);
+}
+.button-secondary {
+  background: rgba(255,255,255,.055);
+  color: #f8fafc;
+  border-color: rgba(255,255,255,.22);
+  box-shadow: none;
+}
+.button-secondary:hover { background: rgba(255,255,255,.12); color: #fff; }
+.hero::before {
+  background:
+    radial-gradient(ellipse at 78% 20%, rgba(240,179,35,.17), transparent 31%),
+    radial-gradient(ellipse at 68% 58%, rgba(217,144,8,.18), transparent 35%),
+    radial-gradient(ellipse at 6% 0%, rgba(148,163,184,.16), transparent 34%),
+    linear-gradient(115deg, #101725 0%, #171f2d 58%, #202736 100%);
+}
+.hero-kicker, .hero .eyebrow {
+  border-color: rgba(240,179,35,.32);
+  background: rgba(240,179,35,.1);
+  color: #ffdc83;
+}
+.hero h1 span, .hero .headline-highlight { color: #f7c64c; }
+.visual-status-dot, .pos-foot-dot, .proof-dot { background: #f0b323; }
+.pos-window { border-color: rgba(240,179,35,.28); }
+.window-brand-mark {
+  background: #f0b323;
+  color: #171c27;
+}
+.window-status, .pos-item-count {
+  border-color: rgba(240,179,35,.28);
+  background: rgba(240,179,35,.1);
+  color: #f7c64c;
+}
+.pos-action-button {
+  background: #f0b323;
+  color: #171c27;
+}
+.visual-support-mark {
+  background: #f0b323;
+  color: #171c27;
+}
+.visual-support-item-slate .visual-support-mark {
+  background: #dce2eb;
+  color: #202736;
+}
+.capability-ribbon { background: #f0b323; color: #171c27; }
+.capability-ribbon .ribbon-label { color: #49350b; }
+.capability-ribbon-list span { border-left-color: rgba(23,28,39,.2); }
+.feature-index, .feature-icon, .flow-number {
+  background: #fff3d4;
+  color: #8a5a00;
+}
+.feature-card:hover { border-color: #e7bf5c; }
+.stock-row-mark-amber { background: #f0b323; }
+.offline-board { border-color: #d9dce2; }
+.offline-step-number { background: #fff3d4; color: #8a5a00; }
+.release-cta {
+  background: #f0b323;
+  color: #171c27;
+}
+.release-cta h2, .release-cta p { color: #171c27; }
+.release-cta .release-pill {
+  background: rgba(255,255,255,.45);
+  border-color: rgba(23,28,39,.14);
+  color: #49350b;
+}
+.release-cta .button-dark {
+  background: #171c27;
+  border-color: #171c27;
+  color: #fffdf8;
+  box-shadow: none;
+}
+.release-cta .button-dark:hover { background: #303847; color: #fff; }
+.text-link, .step-label { color: #9a6700; }
+.status-dot { background: #c78308; }
+.status-planned { background: #fff8e7; border-color: #f1dfad; color: #79520a; }
+.status-unavailable { background: #fff5e5; border-color: #f1d39a; color: #7c4a05; }
+@media (max-width: 820px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-visual { max-width: 720px; width: 100%; margin-inline: auto; }
+  .visual-workspace { padding-inline: clamp(12px, 3vw, 24px); }
+}
+@media (max-width: 600px) {
+  .hero { padding-top: 54px; }
+  .hero-meta { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .visual-workspace { padding: 12px; }
+  .pos-window { padding: 12px; }
+  .pos-line-item { gap: 9px; }
+  .pos-line-item b { font-size: .8rem; }
+  .capability-ribbon-list { gap: 8px 12px; }
+  .capability-ribbon-list span { padding-left: 10px; }
+}
