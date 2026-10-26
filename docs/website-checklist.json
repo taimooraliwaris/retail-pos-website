@@ -390,7 +390,7 @@
           "requirement": "Use real product evidence instead of invented interface visuals.",
           "acceptance_criteria": "Any product screenshot, GIF, or demo is captured from an actual build and accurately represents current behavior.",
           "status": "completed",
-          "notes": "Homepage uses an abstract product-map illustration, explicitly labelled as illustrative and not a screenshot of a released app. No invented product screenshot or released UI is presented."
+          "notes": "Homepage now uses a hand-built HTML/CSS POS concept interface with explicitly illustrative sample data. It is labelled as a concept, not a screenshot or evidence of a released UI."
         },
         {
           "id": "HOME-005",
@@ -734,7 +734,7 @@
           "requirement": "Make the site feel like the product's front door.",
           "acceptance_criteria": "Website color and component language is consistent with the real app and does not introduce an unrelated generic SaaS aesthetic.",
           "status": "in_progress",
-          "notes": "A portfolio-inspired editorial visual pass is implemented in source while retaining the dark slate app foundation and restrained accents. Compare the rendered result with the portfolio and actual Flutter theme after the latest local build before marking complete."
+          "notes": "The visual direction has been revised toward the supplied portfolio's editorial discipline: warm ivory, near-black type, amber-yellow emphasis, fine rules, asymmetry, and generous whitespace. The POS uses its own retail-focused concept interface rather than copying portfolio components. Rebuild and compare the rendered pages before marking complete."
         },
         {
           "id": "UX-003",
@@ -742,7 +742,7 @@
           "requirement": "Use mobile-first layouts.",
           "acceptance_criteria": "Core content and actions work on narrow screens without horizontal scrolling or clipped controls.",
           "status": "in_progress",
-          "notes": "Responsive CSS for desktop, tablet, and phone was updated in the redesign. Latest commit still needs a fresh build and visual checks at real viewport widths."
+          "notes": "The new editorial hero, product concept panel, asymmetric capability grid, and shared page styles include responsive rules. The latest commit still needs a clean build and visual checks at phone, tablet, and desktop widths."
         },
         {
           "id": "UX-004",
@@ -1040,7 +1040,7 @@
           "requirement": "Test responsive layouts across phone, tablet, and desktop widths.",
           "acceptance_criteria": "Navigation, typography, feature layouts, changelog, and download sections remain usable at common viewport sizes.",
           "status": "in_progress",
-          "notes": "Responsive breakpoints were expanded for the redesigned hero and abstract product map. Latest commit has not yet been checked in a browser at phone, tablet, and desktop widths."
+          "notes": "Responsive rules were updated for the editorial hero, concept POS panel, feature grid, offline board, and shared pages. Latest commit has not yet been checked in a browser at phone, tablet, and desktop widths."
         },
         {
           "id": "QA-007",
@@ -1056,7 +1056,7 @@
           "requirement": "Run HTML/link, accessibility, and Lighthouse-style audits.",
           "acceptance_criteria": "Critical and high-severity issues are fixed or explicitly documented before release.",
           "status": "in_progress",
-          "notes": "Source-level checks and the previous local build passed, but the latest redesign commit needs a fresh build plus rendered HTML, accessibility, and Lighthouse-style review."
+          "notes": "The new design system is source-reviewed but has not yet had a fresh production build, rendered accessibility review, or Lighthouse-style audit."
         }
       ]
     },
@@ -1156,7 +1156,7 @@
           "requirement": "Validate JSON, TypeScript, and the production static build.",
           "acceptance_criteria": "Build and validation commands pass from a clean checkout.",
           "status": "in_progress",
-          "notes": "The user successfully ran content checks and Astro build on the pre-redesign foundation (14 pages built). Re-run both commands on the latest visual redesign commit. GitHub Actions remains blocked by the account payment/spending-limit error; do not claim CI passed."
+          "notes": "The user successfully ran content checks and Astro build on the earlier foundation version. Re-run both commands on this editorial redesign. GitHub Actions remains blocked by the account payment/spending-limit error; do not claim CI passed."
         },
         {
           "id": "REL-002",

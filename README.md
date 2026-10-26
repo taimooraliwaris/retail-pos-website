@@ -9,9 +9,10 @@ The public-facing website for **Retail POS Mobile**, an Android-first retail POS
 - Pricing and pilot access have not been announced.
 
 ## Visual direction
-- Portfolio-inspired editorial layout: oversized typography, a deep slate hero, layered visual composition, spacious light content sections, refined feature cards, and a stronger footer.
-- The homepage uses an abstract capability map that is explicitly labelled as an illustration, not a screenshot of a released app.
-- Slate remains the base brand language from the current app theme, with restrained mint/blue accents. The latest redesign must be rebuilt and reviewed at desktop, tablet, and phone widths before merge or deployment.
+- Editorial, portfolio-inspired composition: warm ivory canvas, near-black typography, confident headline scale, fine dividers, generous whitespace, and a restrained amber-yellow accent.
+- Slate remains a supporting color from the app's Material theme; amber is used deliberately for emphasis rather than gradients on every component.
+- The homepage contains a hand-built HTML/CSS concept interface with clearly labelled illustrative sample data. It is not represented as a screenshot of a released app.
+- Product pages share the same restrained visual system; the layout must be checked at desktop, tablet, and phone widths before merge or deployment.
 
 ## Architecture
 - Website: Astro static site with minimal client-side JavaScript.
@@ -39,6 +40,6 @@ The static build is written to `dist/`.
 Before publishing, verify the final HTTPS site URL and set `SITE_URL` to that exact origin. The current `retail-pos-mobile-website.netlify.app` value is a proposed placeholder and must not be assumed available until checked. Recheck the hosting provider's current commercial-use terms, monthly limits, and pause behavior. Do not enable paid upgrades or automatic billing without explicit approval.
 
 ## Quality gates
-GitHub Actions is configured to run content checks and the production build, but the current job is blocked before any step starts by the reported account payment/spending-limit error. No green CI build has been established, and the Astro build has not run in that job. The user successfully ran the content checks and Astro build on the earlier foundation version, producing 14 pages. The visual redesign was committed afterward and still needs a fresh local build and browser review. Follow [the CI fallback guide](docs/ci-fallback.md) for no-cost local validation; do not keep rerunning the blocked job. A green website build still does not prove that an Android workflow or in-app update path works on a physical device.
+GitHub Actions is configured to run content checks and the production build, but the current job is blocked before any step starts by the reported account payment/spending-limit error. No green CI build has been established, and the Astro build has not run in that job. The user successfully ran the content checks and Astro build on the earlier foundation version, producing 14 pages. The current editorial redesign must be built locally and reviewed at desktop, tablet, and phone sizes. Follow [the CI fallback guide](docs/ci-fallback.md) for no-cost local validation; do not keep rerunning the blocked job. A green website build still does not prove that an Android workflow or in-app update path works on a physical device.
 
 Only mark checklist items completed when their acceptance criteria are checked and evidence is recorded.

@@ -1,42 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#080e1b"/>
-      <stop offset=".58" stop-color="#111a34"/>
-      <stop offset="1" stop-color="#252e65"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a5b4fc"/>
-      <stop offset=".55" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#5eead4"/>
-    </linearGradient>
-    <radialGradient id="glow">
-      <stop offset="0" stop-color="#818cf8" stop-opacity=".3"/>
-      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
-      <path d="M42 0H0V42" fill="none" stroke="#fff" stroke-opacity=".06"/>
-    </pattern>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <circle cx="980" cy="170" r="310" fill="url(#glow)"/>
-  <circle cx="1000" cy="315" r="154" fill="none" stroke="#a5b4fc" stroke-opacity=".18"/>
-  <circle cx="1000" cy="315" r="112" fill="none" stroke="#5eead4" stroke-opacity=".2" stroke-dasharray="5 10"/>
-  <rect x="890" y="205" width="220" height="220" rx="54" fill="#17213d" stroke="#a5b4fc" stroke-opacity=".4"/>
-  <rect x="922" y="237" width="156" height="156" rx="42" fill="url(#accent)"/>
-  <rect x="965" y="267" width="70" height="96" rx="15" fill="none" stroke="#0b1020" stroke-width="6"/>
-  <path d="M981 290H1019M981 306H1011M981 322H1000" stroke="#0b1020" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="1019" cy="344" r="5" fill="#0b1020"/>
-  <rect x="78" y="76" width="54" height="54" rx="17" fill="url(#accent)"/>
-  <rect x="94" y="89" width="22" height="28" rx="5" fill="none" stroke="#0b1020" stroke-width="2.5"/>
-  <path d="M99 97H111M99 103H111M99 109H106" stroke="#0b1020" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="150" y="99" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="750">Retail POS Mobile</text>
-  <text x="150" y="124" fill="#a5b4fc" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3">ANDROID-FIRST · IN DEVELOPMENT</text>
-  <text x="78" y="256" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="780" letter-spacing="-3">Less friction</text>
-  <text x="78" y="325" fill="#a5b4fc" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="780" letter-spacing="-3">at the counter.</text>
-  <text x="82" y="383" fill="#c0cadc" font-family="Inter,Arial,sans-serif" font-size="24">More clarity behind it.</text>
-  <rect x="80" y="444" width="270" height="49" rx="15" fill="url(#accent)"/>
-  <text x="103" y="475" fill="#0b1020" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="750">Product direction ↗</text>
-  <text x="80" y="552" fill="#9ba8c5" font-family="Inter,Arial,sans-serif" font-size="17">Pre-launch project · Public APK not available yet</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Retail POS Mobile — A clearer way to run the counter</title>
+  <desc id="desc">Warm ivory and amber editorial artwork for an Android retail point-of-sale project in development.</desc>
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <path d="M760 70h330a28 28 0 0 1 28 28v400a28 28 0 0 1-28 28H760a28 28 0 0 1-28-28V98a28 28 0 0 1 28-28Z" fill="#ffc629" transform="rotate(3 925 298)"/>
+  <rect x="700" y="105" width="390" height="420" rx="24" fill="#20221e" transform="rotate(-3 895 315)"/>
+  <g transform="rotate(-3 895 315)">
+    <rect x="730" y="136" width="38" height="38" rx="10" fill="#ffc629"/>
+    <text x="749" y="162" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="800" text-anchor="middle" fill="#191a18">R</text>
+    <text x="785" y="151" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#fffefa">Retail POS</text>
+    <text x="785" y="169" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2" fill="#b9bbb1">COUNTER / CONCEPT UI</text>
+    <line x1="730" y1="192" x2="1058" y2="192" stroke="#4b4d45" stroke-width="1"/>
+    <text x="735" y="228" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#b9bbb1">CURRENT BASKET</text>
+    <text x="735" y="260" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#fffefa">Everyday essentials</text>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#f4f3ed">
+      <text x="735" y="306">01</text><text x="780" y="306">Milk · 1 L</text><text x="1052" y="306" text-anchor="end">320</text>
+      <text x="735" y="351">02</text><text x="780" y="351">Bread loaf</text><text x="1052" y="351" text-anchor="end">180</text>
+      <text x="735" y="396">03</text><text x="780" y="396">Tea pack</text><text x="1052" y="396" text-anchor="end">690</text>
+    </g>
+    <line x1="730" y1="420" x2="1058" y2="420" stroke="#4b4d45" stroke-width="1"/>
+    <text x="735" y="455" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#b9bbb1">Illustrative total</text>
+    <text x="1054" y="455" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="end" fill="#ffc629">PKR 1,190</text>
+    <rect x="735" y="477" width="318" height="29" rx="8" fill="#ffc629"/>
+    <text x="894" y="496" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#191a18">ILLUSTRATIVE ONLY · NOT A RELEASED APP</text>
+  </g>
+  <text x="68" y="91" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="800" letter-spacing="3" fill="#191a18">ANDROID RETAIL / IN DEVELOPMENT</text>
+  <text x="62" y="235" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800" letter-spacing="-5" fill="#191a18">A clearer way</text>
+  <rect x="60" y="257" width="565" height="105" rx="3" fill="#ffc629" transform="rotate(-1.2 342 309)"/>
+  <text x="75" y="341" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="-5" fill="#191a18">to run the counter.</text>
+  <text x="68" y="421" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#65665f">An Android-first POS concept for everyday shop work.</text>
+  <line x1="68" y1="488" x2="615" y2="488" stroke="#deddd4" stroke-width="2"/>
+  <text x="68" y="530" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#475569">RETAIL POS MOBILE</text>
+  <text x="68" y="555" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#65665f">No public APK is available yet.</text>
 </svg>
