@@ -1,0 +1,29 @@
+---
+const { currentPath = "/" } = Astro.props;
+const links = [
+  { label: "Product", href: "/product/" },
+  { label: "Features", href: "/features/" },
+  { label: "Offline-first", href: "/offline-first/" },
+  { label: "Changelog", href: "/changelog/" }
+];
+const active = (href) => href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Retail POS Mobile home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><rect x="5" y="4.5" width="22" height="23" rx="6" stroke="currentColor" stroke-width="1.8"/><path d="M10 12h12M10 17h8M10 22h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="23" cy="22" r="2.2" fill="currentColor"/></svg></span>
+      <span class="brand-copy"><strong>Retail POS<span class="brand-period">.</span></strong><small>Android retail</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {links.map((link) => <a class:list={["nav-link", active(link.href) && "is-active"]} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</a>)}
+    </nav>
+    <a class="button button-small header-cta" href="/download/">Release status <span aria-hidden="true">↗</span></a>
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Mobile navigation">
+        {links.map((link) => <a class:list={["nav-link", active(link.href) && "is-active"]} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</a>)}
+        <a class="nav-link" href="/download/">Release status</a><a class="nav-link" href="/faq/">FAQ</a>
+      </nav>
+    </details>
+  </div>
+</header>

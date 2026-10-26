@@ -1,0 +1,16 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+const faqs = [
+{question:"Is Retail POS Mobile available to download?",answer:"No. A public APK is not available yet. The mobile project is in foundation development, and the download page will change only after an approved signed build passes its release checks."},
+{question:"Can I use offline selling today?",answer:"Not through a public release. Offline-first operation is a design goal. The complete transaction, sync, retry, and reconciliation flows need to be implemented and tested before they can be described as available."},
+{question:"Will it work with another POS product's database?",answer:"The mobile project is being developed as an independent product with its own data boundary. It is not intended to share another POS product's database, authentication, APIs, storage, or credentials."},
+{question:"What features are planned?",answer:"The planned direction includes checkout and receipts, inventory and stock movement, till control, offline sync, roles and device access, and customer/supplier operations and reports. None should be interpreted as released functionality today."},
+{question:"Has pricing or pilot access been announced?",answer:"No. Pricing and pilot access have not been announced. This site does not request payment or promise a pilot invitation."},
+{question:"How will app updates work?",answer:"When official releases are available, the site will publish version details and release notes. In-app updates are intended to download and verify the APK before opening Android's installer, which still requires user confirmation."},
+{question:"Does this website access my shop's sales or customer data?",answer:"No POS database is connected to this website. The initial site is static and has no account or transaction-data workflow. Hosting providers may process technical request logs; the final privacy notice will be checked against the deployed setup."},
+{question:"Where can I contact support?",answer:"A verified public support channel will be published before pilot access opens. The site currently does not accept messages or collect contact details."}
+];
+---
+<SiteLayout title="Frequently asked questions — Retail POS Mobile" description="Answers about availability, planned offline operation, feature status, pricing, updates, and website data handling." path="/faq/">
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Home</a> / FAQ</div><span class="eyebrow">Clear answers</span><h1>Questions, answered without the guesswork.</h1><p>These answers reflect the current development stage. They will be revised as real app behavior and release evidence become available.</p></div></section>
+<section class="content-section"><div class="container content-wrap faq-list">{faqs.map((faq)=><details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></section></SiteLayout>

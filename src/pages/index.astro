@@ -1,0 +1,171 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import features from "../data/features.json";
+---
+<SiteLayout title="Retail POS Mobile — A clearer way to run the counter" description="An independent Android-first retail POS in development, shaped around everyday shop workflows, traceable stock, and a considered approach to unreliable connectivity." path="/">
+  <section class="hero hero-editorial">
+    <div class="container">
+      <div class="hero-meta">
+        <span class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Android retail. Thought through.</span>
+        <span class="hero-index">PRODUCT DIRECTION / 2026</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>A clearer way to<br /><span class="headline-highlight">run the counter.</span></h1>
+          <p class="hero-lead">An Android-first point-of-sale concept for everyday shop work—planned around focused checkout, traceable stock, and the reality of unreliable internet.</p>
+          <div class="hero-actions">
+            <a class="button" href="/product/">Explore the product <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="/download/">Release status <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-proof-row">
+            <span class="proof-item"><span class="proof-dot" aria-hidden="true"></span> Android-first</span>
+            <span class="proof-divider" aria-hidden="true"></span>
+            <span class="proof-item">Designed around small retail</span>
+          </div>
+          <p class="hero-note"><span class="status-dot" aria-hidden="true"></span> Pre-launch project. No public APK is available yet.</p>
+        </div>
+
+        <div class="hero-visual" role="img" aria-label="Illustrative point-of-sale interface concept showing a sample basket, item rows, a total, and planned stock and offline capabilities. This is not a screenshot of a released app.">
+          <div class="visual-topline" aria-hidden="true">
+            <span class="visual-kicker">PRODUCT STUDY / 01</span>
+            <span class="visual-status"><span class="visual-status-dot"></span> Concept UI · Not released</span>
+          </div>
+          <div class="visual-workspace" aria-hidden="true">
+            <div class="pos-window">
+              <div class="pos-window-bar">
+                <div class="window-brand">
+                  <span class="window-brand-mark">R</span>
+                  <span class="window-brand-copy"><strong>Retail POS</strong><small>COUNTER / SALE</small></span>
+                </div>
+                <span class="window-status">CONCEPT UI</span>
+              </div>
+              <div class="pos-window-body">
+                <div class="pos-heading">
+                  <div><small>CURRENT BASKET</small><strong>Everyday essentials</strong></div>
+                  <span class="pos-item-count">03 ITEMS</span>
+                </div>
+                <div class="pos-line-item"><span class="item-index">01</span><span class="item-name"><strong>Milk · 1 L</strong><small>Groceries</small></span><b>PKR 320</b></div>
+                <div class="pos-line-item"><span class="item-index">02</span><span class="item-name"><strong>Bread loaf</strong><small>Bakery</small></span><b>PKR 180</b></div>
+                <div class="pos-line-item"><span class="item-index">03</span><span class="item-name"><strong>Tea pack</strong><small>Pantry</small></span><b>PKR 690</b></div>
+                <div class="pos-total"><span>Illustrative total</span><strong>PKR 1,190</strong></div>
+                <div class="pos-action-row"><span>Payment step · planned</span><span class="pos-action-button">Review sale <span>↗</span></span></div>
+              </div>
+              <div class="pos-window-foot"><span class="pos-foot-dot"></span> Sample data · not a live app</div>
+            </div>
+            <div class="visual-support-row">
+              <div class="visual-support-item">
+                <span class="visual-support-mark">01</span>
+                <span class="visual-support-copy"><strong>Traceable stock</strong><small>Planned capability</small></span>
+                <span class="visual-support-arrow">↗</span>
+              </div>
+              <div class="visual-support-item visual-support-item-slate">
+                <span class="visual-support-mark">02</span>
+                <span class="visual-support-copy"><strong>Offline by design</strong><small>Architecture in planning</small></span>
+                <span class="visual-support-arrow">↗</span>
+              </div>
+            </div>
+          </div>
+          <p class="visual-caption">Illustrative interface concept — not a screenshot of a released app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="capability-ribbon" aria-label="Product focus areas">
+    <div class="container capability-ribbon-inner">
+      <span class="ribbon-label">BUILT AROUND THE SHIFT</span>
+      <div class="capability-ribbon-list">
+        <span>Checkout &amp; receipts</span>
+        <span>Stock movement</span>
+        <span>Till control</span>
+        <span>Offline &amp; sync</span>
+        <span>Reports &amp; records</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section capabilities-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">01 / What we're building</span>
+          <h2>The details behind a smoother shift.</h2>
+          <p>Six practical areas define the direction. Each stays marked as planned until implementation and release checks provide evidence.</p>
+        </div>
+        <a class="text-link" href="/features/">View all planned features <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="card-grid capability-grid">
+        {features.map((feature, index) => <article class:list={["feature-card", feature.id === "checkout" && "feature-card-wide", feature.id === "inventory" && "feature-card-inventory"]}>
+          <div class="feature-card-top">
+            <span class="feature-index">{String(index + 1).padStart(2, "0")}</span>
+            <span class="feature-state"><span class="status-dot" aria-hidden="true"></span> Planned</span>
+          </div>
+          {feature.id === "checkout" && <div class="mini-basket" aria-hidden="true">
+            <div class="mini-basket-top"><span>CONCEPT / BASKET</span><span>03 ITEMS</span></div>
+            <div class="mini-basket-line"><span class="mini-line-dot">01</span><span>Milk · 1 L</span><strong>320</strong></div>
+            <div class="mini-basket-line"><span class="mini-line-dot">02</span><span>Bread loaf</span><strong>180</strong></div>
+            <div class="mini-basket-line"><span class="mini-line-dot">03</span><span>Tea pack</span><strong>690</strong></div>
+            <div class="mini-basket-total"><span>Illustrative total</span><strong>PKR 1,190</strong></div>
+          </div>}
+          {feature.id === "inventory" && <div class="stock-preview" aria-hidden="true">
+            <div class="stock-preview-top"><strong>Stock overview</strong><span>CONCEPT</span></div>
+            <div class="stock-row"><span class="stock-row-mark"></span><span>Everyday essentials</span><strong>In stock</strong></div>
+            <div class="stock-row"><span class="stock-row-mark stock-row-mark-amber"></span><span>Pantry items</span><strong>Review level</strong></div>
+            <div class="stock-preview-foot"><span>Movement history</span><span>Planned ↗</span></div>
+          </div>}
+          <h3>{feature.title}</h3>
+          <p>{feature.outcome}</p>
+          <a class="feature-link" href={feature.id === "offline" ? "/offline-first/" : "/features/"}>Explore scope <span aria-hidden="true">↗</span></a>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-offline">
+    <div class="container offline-grid">
+      <div class="offline-copy">
+        <span class="eyebrow">02 / Offline-first thinking</span>
+        <h2>Connectivity is a condition—not a guarantee.</h2>
+        <p>A shop still has work to do when the internet drops. The design goal is to make supported local work dependable, then reconcile carefully when a connection returns.</p>
+        <p>Disconnected devices cannot instantly know what another device sold. Conflicts should be visible and reviewable, not silently overwritten.</p>
+        <a class="button button-secondary" href="/offline-first/">Read the offline approach <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="offline-board">
+        <div class="offline-board-top"><span>SYNC MODEL / CONCEPT</span><span>01 — 03</span></div>
+        <div class="offline-step">
+          <span class="offline-step-number">01</span>
+          <div><strong>Work locally</strong><p>Keep supported actions available on the device.</p></div>
+          <span class="offline-step-state">DEVICE</span>
+        </div>
+        <div class="offline-step">
+          <span class="offline-step-number">02</span>
+          <div><strong>Queue safely</strong><p>Prepare operations for retry without duplicating them.</p></div>
+          <span class="offline-step-state">QUEUE</span>
+        </div>
+        <div class="offline-step">
+          <span class="offline-step-number">03</span>
+          <div><strong>Reconcile on return</strong><p>Validate changes and make conflicts clear.</p></div>
+          <span class="offline-step-state">REVIEW</span>
+        </div>
+        <p class="offline-board-note">Architecture direction only. These workflows are not yet released capabilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section release-section">
+    <div class="container">
+      <div class="release-cta">
+        <div class="release-cta-top"><span>03 / WHEN IT'S READY</span><span class="release-pill"><span class="status-dot" aria-hidden="true"></span> Pre-launch</span></div>
+        <div class="release-cta-body">
+          <div>
+            <h2>No launch theatre.<br />Just a release you can verify.</h2>
+            <p>When an approved, signed APK exists, the release page will list its version, build, Android requirements, checksum, and known limitations. Until then, the status stays clear.</p>
+          </div>
+          <a class="button button-dark" href="/download/">Check release status <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
