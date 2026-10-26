@@ -11,7 +11,7 @@ The public-facing website for **Retail POS Mobile**, an Android-first retail POS
 ## Visual direction
 - Editorial, portfolio-inspired composition: warm ivory canvas, near-black typography, confident headline scale, fine dividers, generous whitespace, and a restrained amber-yellow accent.
 - Slate remains a supporting color from the app's Material theme; amber is used deliberately for emphasis rather than gradients on every component.
-- The homepage contains a hand-built HTML/CSS concept interface with clearly labelled illustrative sample data. It is not represented as a screenshot of a released app.
+- The homepage contains a hand-built, straight-edged retail workspace concept with aligned supporting capability modules and clearly labelled illustrative sample data. It is not represented as a screenshot of a released app.
 - Product pages share the same restrained visual system; the layout must be checked at desktop, tablet, and phone widths before merge or deployment.
 
 ## Architecture
